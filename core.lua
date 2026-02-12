@@ -291,7 +291,7 @@ function RGL:CreateLabel()
 	holder:ClearAllPoints()
 	holder:SetPoint(point, self:GetAnchorTarget(), relativePoint, xOffset, yOffset)
 
-	E:CreateMover(holder, "RGL_PlayerMover", "Player Group Label", nil, nil, nil, "ALL,GENERAL", nil, "ElvUI_RaidGroupLabel")
+	E:CreateMover(holder, "RGL_PlayerMover", "Player Group Label", nil, nil, nil, "ALL,GENERAL", nil, "unitframe,individualUnits,player,rgl")
 
 	self:ApplyPosition(false)
 
