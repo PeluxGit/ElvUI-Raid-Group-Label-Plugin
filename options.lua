@@ -190,10 +190,11 @@ local function BuildOptions()
 		},
 	}
 
-	E.Options.args.rgl = options
-	if E.Options.args.plugins then
-		E.Options.args.plugins.args.rgl = options
-	end
+	local uf = E.Options.args.unitframe
+	local individual = uf and uf.args and uf.args.individualUnits
+	local player = individual and individual.args and individual.args.player
+
+	player.args.rgl = options
 end
 
 if EP then
