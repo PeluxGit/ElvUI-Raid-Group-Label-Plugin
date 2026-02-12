@@ -1,0 +1,10 @@
+## Interface: 120001
+## Title: ElvUI Raid Group Label
+## Notes: Shows your current raid group on the ElvUI player frame.
+## Author: Pelux
+## Version: beta
+## RequiredDeps: ElvUI
+## DefaultState: enabled
+
+core.lua
+options.lua
