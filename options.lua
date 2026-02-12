@@ -22,7 +22,7 @@ local function BuildOptions()
 	local options = {
 		type = "group",
 		name = "Raid Group Label",
-		order = 90,
+		order = 999,
 		get = function(info) return E.db.rgl[info[#info]] end,
 		set = function(info, value)
 			local key = info[#info]
