@@ -316,6 +316,11 @@ function RGL:TryCreate()
 		return
 	end
 
+	if InCombatLockdown and InCombatLockdown() then
+		self.needsPostCombatRefresh = true
+		return
+	end
+
 	if self.holder then
 		self:ApplyFont()
 		self:ApplyBackdrop()
@@ -325,6 +330,15 @@ function RGL:TryCreate()
 	end
 
 	self:CreateLabel()
+end
+
+function RGL:OnRegenEnabled()
+	if not self.needsPostCombatRefresh then
+		return
+	end
+
+	self.needsPostCombatRefresh = nil
+	self:TryCreate()
 end
 
 function RGL:Initialize()
@@ -341,6 +355,7 @@ function RGL:Initialize()
 	self:RegisterEvent("GROUP_ROSTER_UPDATE", "UpdateLabel")
 	self:RegisterEvent("RAID_ROSTER_UPDATE", "UpdateLabel")
 	self:RegisterEvent("PLAYER_ENTERING_WORLD", "TryCreate")
+	self:RegisterEvent("PLAYER_REGEN_ENABLED", "OnRegenEnabled")
 end
 
 E:RegisterModule(RGL:GetName())

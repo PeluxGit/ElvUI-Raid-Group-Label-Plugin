@@ -130,6 +130,17 @@ local function BuildOptions()
 							RGL:ApplyBackdrop()
 						end,
 					},
+					resetStyle = {
+						type = "execute",
+						name = "Reset Style",
+						order = 4,
+						func = function()
+							E.db.rgl.useCustomColors = P.rgl.useCustomColors
+							E.db.rgl.bgColor = E:CopyTable({}, P.rgl.bgColor)
+							E.db.rgl.borderColor = E:CopyTable({}, P.rgl.borderColor)
+							RGL:ApplyBackdrop()
+						end,
+					},
 				},
 			},
 			position = {

@@ -3,6 +3,7 @@
 ## Notes: Shows your current raid group on the ElvUI player frame.
 ## Author: Pelux
 ## Version: beta
+## X-Category: UnitFrame
 ## RequiredDeps: ElvUI
 ## DefaultState: enabled
 
