@@ -8,7 +8,7 @@
 ## DefaultState: enabled
 ## X-Category: UnitFrame
 ## X-Website: https://github.com/PeluxGit/ElvUI-Raid-Group-Label-Plugin
-## X-Curse-Project-ID:
+## X-Curse-Project-ID: 1461441
 
 core.lua
 options.lua
