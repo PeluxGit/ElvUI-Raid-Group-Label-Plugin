@@ -65,6 +65,21 @@ function RGL:GetAnchorTarget()
 	return UIParent
 end
 
+function RGL:ApplyFrameLayering()
+	if not self.holder then
+		return
+	end
+
+	local playerFrame = self:GetPlayerFrame()
+	if playerFrame and playerFrame.GetFrameStrata then
+		self.holder:SetFrameStrata(playerFrame:GetFrameStrata())
+		self.holder:SetFrameLevel(200)
+	else
+		self.holder:SetFrameStrata("LOW")
+		self.holder:SetFrameLevel(200)
+	end
+end
+
 function RGL:FormatText(group)
 	local style = E.db.rgl.textFormat
 
@@ -226,6 +241,8 @@ function RGL:ApplyPosition(force)
 		return
 	end
 
+	self:ApplyFrameLayering()
+
 	local anchorTarget = self:GetAnchorTarget()
 
 	local point, relativePoint, xOffset, yOffset = self:GetPositionSettings()
@@ -275,7 +292,6 @@ function RGL:CreateLabel()
 	local parent = UIParent
 	local holder = CreateFrame("Frame", "RGL_PlayerGroupLabel", parent)
 	holder:EnableMouse(false)
-	holder:SetFrameStrata("HIGH")
 	holder:CreateBackdrop("Transparent")
 	holder:SetSize(40, 20)
 
@@ -284,6 +300,7 @@ function RGL:CreateLabel()
 
 	self.holder = holder
 
+	self:ApplyFrameLayering()
 	self:ApplyFont()
 	self:ApplyBackdrop()
 
